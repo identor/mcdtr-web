@@ -1,0 +1,18 @@
+.md-sidenav-container, employee-list {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+md-toolbar span {
+  margin-left: 20px;
+}
+
+md-sidenav {
+  min-width: 100px;
+  padding: 10px;
+}
+
+.app-content {
+  padding: 20px;
+}

@@ -1,0 +1,19 @@
+<md-sidenav-layout>
+  <md-sidenav #sidenav mode="side" opened="true">
+    <employee-list (onEmployeeClicked)="displayEmployee($event)"></employee-list>
+  </md-sidenav>
+  <md-toolbar>
+    <button md-button (click)="sidenav.toggle()">
+      <md-icon>menu</md-icon>
+    </button>
+    <span>$name > moreRecords > $year > $cutoffDateRange</span>
+  </md-toolbar>
+  <div class="app-content">
+    <div *ngIf="employee">
+      <employee-details [employee]="employee"></employee-details>
+    </div>
+  </div>
+  <record-list></record-list>
+  <cutoff-year-picker></cutoff-year-picker>
+  <cutoff-picker></cutoff-picker>
+</md-sidenav-layout>

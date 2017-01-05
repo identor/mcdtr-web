@@ -1,15 +1,14 @@
-import { browser, element, by } from 'protractor';
+import { McdtrWebClientPage } from './app.po';
 
-describe('QuickStart E2E Tests', function () {
+describe('mcdtr-web-client App', function() {
+  let page: McdtrWebClientPage;
 
-  let expectedMsg = 'Hello Angular';
-
-  beforeEach(function () {
-    browser.get('');
+  beforeEach(() => {
+    page = new McdtrWebClientPage();
   });
 
-  it('should display: ' + expectedMsg, function () {
-    expect(element(by.css('h1')).getText()).toEqual(expectedMsg);
+  it('should display message saying app works', () => {
+    page.navigateTo();
+    expect(page.getParagraphText()).toEqual('app works!');
   });
-
 });
