@@ -9,9 +9,6 @@
     <span>$name > moreRecords > $year > $cutoffDateRange</span>
   </md-toolbar>
   <div class="app-content">
-    <div *ngIf="employee">
-      <employee-details [employee]="employee"></employee-details>
-    </div>
+    <router-outlet></router-outlet>
   </div>
-  <router-outlet></router-outlet>
 </md-sidenav-layout>

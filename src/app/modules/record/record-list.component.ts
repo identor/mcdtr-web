@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import Record from './record';
+import { RecordService } from './record-service';
 
 @Component({
   selector: 'record-list',
@@ -13,23 +16,27 @@ import { Component } from '@angular/core';
         <th>OT</th>
         <th>NSD</th>
       </tr>
-      <tr>
-        <td>Nov 3</td>
-        <td>8:00 am</td>
-        <td>6:00 pm</td>
-        <td>9</td>
-        <td>1</td>
-        <td>0</td>
-      </tr>
-      <tr>
-        <td>Nov 4</td>
-        <td>8:00 am</td>
-        <td>6:00 pm</td>
-        <td>9</td>
-        <td>1</td>
-        <td>0</td>
+      <tr *ngFor="let record of records">
+        <td>{{record.day}}</td>
+        <td>{{record.formattedTimeIn}}</td>
+        <td>{{record.formattedTimeOut}}</td>
+        <td>{{record.hoursRendered}}</td>
+        <td>{{record.ot}}</td>
+        <td>{{record.nsd}}</td>
       </tr>
     </table>
   </md-card>`
 })
-export class RecordListComponent { }
+export class RecordListComponent implements OnInit {
+  records: [Record];
+
+  constructor(
+    private recordService: RecordService
+  ) { }
+
+  ngOnInit() {
+    this.recordService
+      .findAll()
+      .then(records => this.records = records);
+  }
+}

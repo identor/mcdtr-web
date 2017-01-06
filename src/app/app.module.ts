@@ -13,31 +13,11 @@ import { CutoffYearPickerComponent } from './modules/cutoff/cutoff-year-picker.c
 import { CutoffPickerComponent } from './modules/cutoff/cutoff-picker.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 
-const ROUTES: Routes = [
-  {
-    path: 'employees/cutoffs/year-picker',
-    component: CutoffYearPickerComponent
-  },
-  {
-    path: 'employees/cutoffs',
-    component: CutoffPickerComponent
-  },
-  {
-    path: 'employees/records/:id',
-    component: RecordListComponent
-  },
-  {
-    path: 'employees/:id',
-    component: EmployeeDetailsComponent
-  },
-  {
-    path: '',
-    component: DashboardComponent
-  },
-  {
-    path: '**', component: DashboardComponent
-  }
-]
+import { EmployeeService } from './modules/employee/employee-service';
+import { CutoffService } from './modules/cutoff/cutoff-service';
+import { RecordService } from './modules/record/record-service';
+
+import { ROUTES } from './app-routes';
 
 @NgModule({
   declarations: [
@@ -56,7 +36,11 @@ const ROUTES: Routes = [
     MaterialModule.forRoot(),
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [],
+  providers: [
+    EmployeeService,
+    CutoffService,
+    RecordService
+  ],
   bootstrap: [
     AppComponent
   ]
